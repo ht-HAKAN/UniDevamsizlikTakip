@@ -63,6 +63,7 @@ namespace UniDevamsizlikTakip
 
             GuncelleListBox();
             Kaydet();
+            numericUpDown1.Value = 0; // Ekleme iþleminden sonra sayacý sýfýrla
         }
         void GuncelleListBox()
         {
@@ -149,6 +150,7 @@ namespace UniDevamsizlikTakip
             // Ekraný ve dosyayý en güncel haliyle yenile
             GuncelleListBox();
             Kaydet();
+            numericUpDown1.Value = 0; // Ekleme iþleminden sonra sayacý sýfýrla
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
