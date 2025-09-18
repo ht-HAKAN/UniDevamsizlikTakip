@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace UniDevamsizlikTakip
 {
     public partial class Form1 : Form
@@ -33,16 +35,38 @@ namespace UniDevamsizlikTakip
                 {"SÝSTEM ANALÝZ VE TASARIMI", 9}
             };
 
-            // Açýlýr menüyü doldurma
+            // Açýlan menüyü doldur
             foreach (var ders in devamsizliklar.Keys)
             {
                 comboBox1.Items.Add(ders);
             }
 
-            // Ýlk dersi seç
+            // Ýlk dersi seçme
             if (comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0;
+
+                GuncelleListBox();
+            }
+
+            void GuncelleListBox()
+            {
+               listBox1.Items.Clear();
+                if (devamsizliklar != null)
+                {
+
+                    foreach (var ders in devamsizliklar)
+                    {
+                        string dersAdi = ders.Key;
+                        int mevcutDevamsizlik = ders.Value;
+                        if (maxDevamsizlik != null)
+                        {
+                            int maxDevamsizlikHakki = maxDevamsizlik[dersAdi];
+                            listBox1.Items.Add($"{dersAdi} [{mevcutDevamsizlik} / {maxDevamsizlikHakki}] Saat");
+
+                        }
+                    }
+                }
             }
         }
     }

@@ -39,29 +39,29 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(47, 233);
+            listBox1.Location = new Point(28, 44);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 94);
+            listBox1.Size = new Size(711, 169);
             listBox1.TabIndex = 0;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(462, 211);
+            comboBox1.Location = new Point(54, 236);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(220, 23);
             comboBox1.TabIndex = 1;
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(463, 304);
+            numericUpDown1.Location = new Point(482, 236);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 2;
             // 
             // button1
             // 
-            button1.Location = new Point(462, 342);
+            button1.Location = new Point(482, 265);
             button1.Name = "button1";
             button1.Size = new Size(121, 33);
             button1.TabIndex = 3;
