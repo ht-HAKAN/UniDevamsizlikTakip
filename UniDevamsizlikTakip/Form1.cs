@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace UniDevamsizlikTakip
-{ 
-
-
+{
     public partial class Form1 : Form
     {
         Dictionary<string, int>? devamsizliklar;
         Dictionary<string, int>? maxDevamsizlik;
+
         // Kayýt dosyasý
         private readonly string dosyaYolu = "devamsizlik.txt";
 
@@ -20,17 +19,7 @@ namespace UniDevamsizlikTakip
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Dersleri tanýmla
-            devamsizliklar = new Dictionary<string, int>()
-            {
-                {"GÖRSEL PROGRAMLAMA I", 0},
-                {"ÝLERÝ NESNE TABANLI PROGRAMLAMA", 0},
-                {"ÝNTERNET PROGRAMCILIÐI I", 0},
-                {"PYTHON PROGRAMLAMA", 0},
-                {"SÝSTEM ANALÝZ VE TASARIMI", 0}
-            };
-
-            // Devamsýzlýk Limitlerini tanýmla
+            // Maksimum devamsýzlýk haklarý 
             maxDevamsizlik = new Dictionary<string, int>()
             {
                 {"GÖRSEL PROGRAMLAMA I", 13},
@@ -40,10 +29,15 @@ namespace UniDevamsizlikTakip
                 {"SÝSTEM ANALÝZ VE TASARIMI", 9}
             };
 
+            VerileriYukle();
+
             // Açýlan menüyü doldur
-            foreach (var ders in devamsizliklar.Keys)
+            if (devamsizliklar != null)
             {
-                comboBox1.Items.Add(ders);
+                foreach (var ders in devamsizliklar.Keys)
+                {
+                    comboBox1.Items.Add(ders);
+                }
             }
 
             // Ýlk dersi seçme
@@ -54,6 +48,7 @@ namespace UniDevamsizlikTakip
 
             GuncelleListBox();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             string? secilenDers = comboBox1.SelectedItem?.ToString();
@@ -64,26 +59,10 @@ namespace UniDevamsizlikTakip
                 return;
             }
 
-            // Seçilen dersin devamsýzlýk saatini güncelle
             devamsizliklar[secilenDers] += eklenecekSaat;
 
-            // Ekrani anýnda yenile
             GuncelleListBox();
-            Kaydet();
-
-            void Kaydet()
-            {
-                var satirlar = new List<string>();
-                if (devamsizliklar != null)
-                {
-                    foreach (var ders in devamsizliklar)
-                    {
-                        satirlar.Add($"{ders.Key}:{ders.Value}");
-                    }
-                }
-                File.WriteAllLines(dosyaYolu, satirlar);
-            }
-
+            Kaydet(); 
         }
         void GuncelleListBox()
         {
@@ -100,6 +79,50 @@ namespace UniDevamsizlikTakip
                         listBox1.Items.Add($"{dersAdi} [{mevcutDevamsizlik} / {maxDevamsizlikHakki}] Saat");
                     }
                 }
+            }
+        }
+
+        void Kaydet()
+        {
+            var satirlar = new List<string>();
+            if (devamsizliklar != null)
+            {
+                foreach (var ders in devamsizliklar)
+                {
+                    satirlar.Add($"{ders.Key}:{ders.Value}");
+                }
+            }
+            File.WriteAllLines(dosyaYolu, satirlar);
+        }
+
+        void VerileriYukle()
+        {
+            // Eðer kayýt dosyasý varsa, içindeki verileri oku
+            if (File.Exists(dosyaYolu))
+            {
+                devamsizliklar = new Dictionary<string, int>();
+                var satirlar = File.ReadAllLines(dosyaYolu);
+                foreach (var satir in satirlar)
+                {
+                    var parcalar = satir.Split(':');
+                    if (parcalar.Length == 2)
+                    {
+                        string dersAdi = parcalar[0];
+                        int.TryParse(parcalar[1], out int devamsizlikSayisi);
+                        devamsizliklar[dersAdi] = devamsizlikSayisi;
+                    }
+                }
+            }
+            else // Eðer kayýt dosyasý yoksa dersleri sýfýrdan oluþtur
+            {
+                devamsizliklar = new Dictionary<string, int>()
+                {
+                    {"GÖRSEL PROGRAMLAMA I", 0},
+                    {"ÝLERÝ NESNE TABANLI PROGRAMLAMA", 0},
+                    {"ÝNTERNET PROGRAMCILIÐI I", 0},
+                    {"PYTHON PROGRAMLAMA", 0},
+                    {"SÝSTEM ANALÝZ VE TASARIMI", 0}
+                };
             }
         }
     }
