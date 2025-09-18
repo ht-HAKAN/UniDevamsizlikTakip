@@ -31,6 +31,7 @@
             // 
             // listBox1
             // 
+            listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.Font = new Font("Segoe UI", 9.75F);
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 17;
@@ -38,6 +39,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(438, 225);
             listBox1.TabIndex = 0;
+            listBox1.DrawItem += listBox1_DrawItem;
             // 
             // comboBox1
             // 

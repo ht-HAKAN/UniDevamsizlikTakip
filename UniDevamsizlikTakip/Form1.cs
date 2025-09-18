@@ -150,5 +150,46 @@ namespace UniDevamsizlikTakip
             GuncelleListBox();
             Kaydet();
         }
+
+        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+    if (e.Index < 0) return;
+
+    // Çizilecek satýrýn metnini alma
+    string text = listBox1.Items[e.Index].ToString();
+    
+    // Varsayýlan metin rengi
+    Color textColor = Color.Black; 
+    
+    try
+    {
+        string sayilarBolumu = text.Substring(text.IndexOf('[') + 1, text.IndexOf(']') - text.IndexOf('[') - 1);
+        var parcalar = sayilarBolumu.Split('/');
+        int mevcutDevamsizlik = int.Parse(parcalar[0].Trim());
+        int maxDevamsizlikHakki = int.Parse(parcalar[1].Trim());
+
+        if (mevcutDevamsizlik > maxDevamsizlikHakki)
+        {
+            textColor = Color.Red; // Sýnýrý geçtiyse KIRMIZI
+        }
+        else if (mevcutDevamsizlik >= maxDevamsizlikHakki * 0.8)
+        {
+            textColor = Color.DarkOrange; // Sýnýr %80'ine ulaþtýysa TURUNCU renk
+        }
+    }
+    catch
+    {
+                // Hata olursa varsayýlan siyah renk olsun
+            }
+
+            e.DrawBackground();
+
+    using (Brush brush = new SolidBrush(textColor))
+    {
+        e.Graphics.DrawString(text, e.Font, brush, e.Bounds);
+    }
+    e.DrawFocusRectangle();
+
+        }
     }
 }
