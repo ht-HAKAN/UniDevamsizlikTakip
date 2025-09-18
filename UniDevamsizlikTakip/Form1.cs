@@ -1,9 +1,17 @@
+using System.IO;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
 namespace UniDevamsizlikTakip
-{
+{ 
+
+
     public partial class Form1 : Form
     {
         Dictionary<string, int>? devamsizliklar;
         Dictionary<string, int>? maxDevamsizlik;
+        // Kayýt dosyasý
+        private readonly string dosyaYolu = "devamsizlik.txt";
 
         public Form1()
         {
@@ -61,6 +69,21 @@ namespace UniDevamsizlikTakip
 
             // Ekrani anýnda yenile
             GuncelleListBox();
+            Kaydet();
+
+            void Kaydet()
+            {
+                var satirlar = new List<string>();
+                if (devamsizliklar != null)
+                {
+                    foreach (var ders in devamsizliklar)
+                    {
+                        satirlar.Add($"{ders.Key}:{ders.Value}");
+                    }
+                }
+                File.WriteAllLines(dosyaYolu, satirlar);
+            }
+
         }
         void GuncelleListBox()
         {
