@@ -1,16 +1,13 @@
-using System.Windows.Forms;
-
 namespace UniDevamsizlikTakip
 {
     public partial class Form1 : Form
-
     {
         Dictionary<string, int>? devamsizliklar;
         Dictionary<string, int>? maxDevamsizlik;
+
         public Form1()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -45,26 +42,39 @@ namespace UniDevamsizlikTakip
             if (comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0;
-
-                GuncelleListBox();
             }
 
-            void GuncelleListBox()
+            GuncelleListBox();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string? secilenDers = comboBox1.SelectedItem?.ToString();
+            int eklenecekSaat = (int)numericUpDown1.Value;
+
+            if (string.IsNullOrEmpty(secilenDers) || devamsizliklar == null)
             {
-               listBox1.Items.Clear();
-                if (devamsizliklar != null)
+                return;
+            }
+
+            // Seçilen dersin devamsýzlýk saatini güncelle
+            devamsizliklar[secilenDers] += eklenecekSaat;
+
+            // Ekrani anýnda yenile
+            GuncelleListBox();
+        }
+        void GuncelleListBox()
+        {
+            listBox1.Items.Clear();
+            if (devamsizliklar != null)
+            {
+                foreach (var ders in devamsizliklar)
                 {
-
-                    foreach (var ders in devamsizliklar)
+                    string dersAdi = ders.Key;
+                    int mevcutDevamsizlik = ders.Value;
+                    if (maxDevamsizlik != null)
                     {
-                        string dersAdi = ders.Key;
-                        int mevcutDevamsizlik = ders.Value;
-                        if (maxDevamsizlik != null)
-                        {
-                            int maxDevamsizlikHakki = maxDevamsizlik[dersAdi];
-                            listBox1.Items.Add($"{dersAdi} [{mevcutDevamsizlik} / {maxDevamsizlikHakki}] Saat");
-
-                        }
+                        int maxDevamsizlikHakki = maxDevamsizlik[dersAdi];
+                        listBox1.Items.Add($"{dersAdi} [{mevcutDevamsizlik} / {maxDevamsizlikHakki}] Saat");
                     }
                 }
             }
