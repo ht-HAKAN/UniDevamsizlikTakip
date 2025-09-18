@@ -22,6 +22,7 @@
             numericUpDown1 = new NumericUpDown();
             button1 = new Button();
             groupBox1 = new GroupBox();
+            button2 = new Button();
             label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -59,7 +60,7 @@
             button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             button1.Location = new Point(17, 160);
             button1.Name = "button1";
-            button1.Size = new Size(248, 42);
+            button1.Size = new Size(120, 42);
             button1.TabIndex = 3;
             button1.Text = "Devamsızlık Ekle";
             button1.UseVisualStyleBackColor = true;
@@ -67,6 +68,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboBox1);
@@ -78,6 +80,16 @@
             groupBox1.Size = new Size(284, 225);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(162, 160);
+            button2.Name = "button2";
+            button2.Size = new Size(116, 42);
+            button2.TabIndex = 6;
+            button2.Text = "Devamsızlık Sıfırla";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label2
             // 
@@ -126,5 +138,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private Label label1;
+        private Button button2;
     }
 }

@@ -62,7 +62,7 @@ namespace UniDevamsizlikTakip
             devamsizliklar[secilenDers] += eklenecekSaat;
 
             GuncelleListBox();
-            Kaydet(); 
+            Kaydet();
         }
         void GuncelleListBox()
         {
@@ -124,6 +124,31 @@ namespace UniDevamsizlikTakip
                     {"SÝSTEM ANALÝZ VE TASARIMI", 0}
                 };
             }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Listeden seçili olan satýrý al
+            string? seciliSatir = listBox1.SelectedItem?.ToString();
+
+            // Eðer listeden hiçbir þey seçilmemiþse uyarý mesajý göster 
+            if (string.IsNullOrEmpty(seciliSatir))
+            {
+                MessageBox.Show("Listeden bir ders seç.", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Seçili satýrdan dersin adýný ayýkla
+            string dersAdi = seciliSatir.Substring(0, seciliSatir.IndexOf('[')).Trim();
+
+            // Seçili dersin devamsýzlýðýný sýfýrla
+            if (devamsizliklar != null && devamsizliklar.ContainsKey(dersAdi))
+            {
+                devamsizliklar[dersAdi] = 0;
+            }
+
+            // Ekraný ve dosyayý en güncel haliyle yenile
+            GuncelleListBox();
+            Kaydet();
         }
     }
 }
