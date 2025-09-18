@@ -40,6 +40,7 @@
             listBox1.Size = new Size(438, 225);
             listBox1.TabIndex = 0;
             listBox1.DrawItem += listBox1_DrawItem;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // comboBox1
             // 
