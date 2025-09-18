@@ -3,8 +3,8 @@ namespace UniDevamsizlikTakip
     public partial class Form1 : Form
 
     {
-        Dictionary<string, int> devamsizliklar;
-        Dictionary<string, int> maxDevamsizlik;
+        Dictionary<string, int>? devamsizliklar;
+        Dictionary<string, int>? maxDevamsizlik;
         public Form1()
         {
             InitializeComponent();
@@ -33,8 +33,17 @@ namespace UniDevamsizlikTakip
                 {"SÝSTEM ANALÝZ VE TASARIMI", 9}
             };
 
+            // Açýlýr menüyü doldurma
+            foreach (var ders in devamsizliklar.Keys)
+            {
+                comboBox1.Items.Add(ders);
+            }
 
-
+            // Ýlk dersi seç
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
         }
     }
 }
