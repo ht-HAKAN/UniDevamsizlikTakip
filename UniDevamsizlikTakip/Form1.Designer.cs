@@ -25,12 +25,15 @@
             button2 = new Button();
             label2 = new Label();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // listBox1
             // 
+            listBox1.BackColor = Color.White;
             listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.Font = new Font("Segoe UI", 9.75F);
             listBox1.FormattingEnabled = true;
@@ -71,6 +74,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -80,6 +84,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             groupBox1.Location = new Point(469, 12);
             groupBox1.Name = "groupBox1";
+            groupBox1.RightToLeft = RightToLeft.Yes;
             groupBox1.Size = new Size(284, 225);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
@@ -100,9 +105,9 @@
             label2.Font = new Font("Segoe UI", 9F);
             label2.Location = new Point(17, 98);
             label2.Name = "label2";
-            label2.Size = new Size(155, 15);
+            label2.Size = new Size(152, 15);
             label2.TabIndex = 5;
-            label2.Text = "Eklenecek Devamsızlık Saati:";
+            label2.Text = "Eklenecek Devamsızlık Saati";
             // 
             // label1
             // 
@@ -110,9 +115,21 @@
             label1.Font = new Font("Segoe UI", 9F);
             label1.Location = new Point(17, 36);
             label1.Name = "label1";
-            label1.Size = new Size(54, 15);
+            label1.Size = new Size(51, 15);
             label1.TabIndex = 4;
-            label1.Text = "Ders Seç:";
+            label1.Text = "Ders Seç";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ActiveBorder;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.background_image;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(765, 253);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -121,6 +138,7 @@
             ClientSize = new Size(765, 253);
             Controls.Add(groupBox1);
             Controls.Add(listBox1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Form1";
@@ -129,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -142,5 +161,6 @@
         private System.Windows.Forms.Label label2;
         private Label label1;
         private Button button2;
+        private PictureBox pictureBox1;
     }
 }
