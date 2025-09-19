@@ -74,6 +74,7 @@
             // 
             // button2
             // 
+            button2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             button2.Location = new Point(163, 153);
             button2.Name = "button2";
             button2.Size = new Size(116, 42);
