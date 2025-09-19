@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             listBox1 = new ListBox();
             comboBox1 = new ComboBox();
             numericUpDown1 = new NumericUpDown();
@@ -140,6 +141,7 @@
             Controls.Add(listBox1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";
             Text = "Devamsızlık Takip Uygulaması";
