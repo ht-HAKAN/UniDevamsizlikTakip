@@ -85,11 +85,11 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             groupBox1.Location = new Point(469, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.RightToLeft = RightToLeft.Yes;
+            groupBox1.RightToLeft = RightToLeft.No;
             groupBox1.Size = new Size(284, 225);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            groupBox1.Text = "*******************************************";
+            this.groupBox1.Text = "";
             // 
             // button2
             // 
@@ -107,9 +107,9 @@
             label2.Font = new Font("Segoe UI", 9F);
             label2.Location = new Point(17, 98);
             label2.Name = "label2";
-            label2.Size = new Size(152, 15);
+            label2.Size = new Size(155, 15);
             label2.TabIndex = 5;
-            label2.Text = "Eklenecek Devamsızlık Saati";
+            label2.Text = "Eklenecek Devamsızlık Saati:";
             // 
             // label1
             // 
@@ -117,9 +117,9 @@
             label1.Font = new Font("Segoe UI", 9F);
             label1.Location = new Point(17, 36);
             label1.Name = "label1";
-            label1.Size = new Size(51, 15);
+            label1.Size = new Size(54, 15);
             label1.TabIndex = 4;
-            label1.Text = "Ders Seç";
+            label1.Text = "Ders Seç:";
             // 
             // pictureBox1
             // 
@@ -161,9 +161,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private Label label1;
         private Button button2;
         private PictureBox pictureBox1;
+        private Label label2;
+        private Label label1;
     }
 }
