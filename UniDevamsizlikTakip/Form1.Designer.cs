@@ -89,6 +89,7 @@
             groupBox1.Size = new Size(284, 225);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
+            groupBox1.Text = "*******************************************";
             // 
             // button2
             // 
